@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Loktra Location Tracker</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Cancel">Cancel</string>
+    <string name="gps_network_not_enabled">LooksLike GPS is not enabled in your phone !!!</string>
+    <string name="open_location_settings">Open Lccation Settings</string>
+    <string name="start_shifting">Start Shifting</string>
+    <string name="stop_shifting">Stop Shifting</string>
+</resources>
