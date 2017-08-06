@@ -44,8 +44,6 @@ public class TrackingService extends Service implements GoogleApiClient.Connecti
     private double longitudeValue = 0.0;
     private long startTimeInMilliSeconds = 0L;
     private SharedPrefHelperClass sharedPrefHelperClass;
-    private static float LatCount = 0;
-    private static float LonCount = 0;
 
     @Override
     public void onCreate() {
@@ -84,16 +82,14 @@ public class TrackingService extends Service implements GoogleApiClient.Connecti
     @Override
     public void onLocationChanged(Location location) {
 
-//        LatCount = LatCount + 0.01f;
-        LonCount = LonCount + 0.001f;
 
         if (isRouteTrackingOn() && startTimeInMilliSeconds == 0) {
             startTimeInMilliSeconds = System.currentTimeMillis();
         }
 
         if (isRouteTrackingOn() && startTimeInMilliSeconds > 0) {
-            latitudeValue = location.getLatitude() + LatCount;
-            longitudeValue = location.getLongitude() + LonCount;
+            latitudeValue = location.getLatitude();
+            longitudeValue = location.getLongitude();
 
 
             LocationObject locationObject = new LocationObject(System.currentTimeMillis(), latitudeValue, longitudeValue);
