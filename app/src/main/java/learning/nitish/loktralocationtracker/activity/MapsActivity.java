@@ -16,6 +16,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -177,7 +178,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         @Override
         public void onReceive(Context context, Intent intent) {
             String local = intent.getExtras().getString("RESULT_CODE");
-
             assert local != null;
             if (local.equals("LOCAL")) {
                 if (startToPresentLocations.size() > 0) {
@@ -305,7 +305,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             cardView.setVisibility(View.GONE);
             statService();
             mapHelperClass.refreshMap(mMap);
+            LocationObject firstObejct = startToPresentLocations.get(0);
             startToPresentLocations.clear();
+            startToPresentLocations.add(firstObejct);
             mGoogleApiClient.connect();
             isServiceRunning = true;
 
@@ -336,9 +338,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         long diffmin = diffSec / 60;
         long hrs = diffmin / 60;
         long min = diffmin % 60;
+        long sec = diffSec % 60;
         System.out.println(sdf.format(resultdate));
         cardView.setVisibility(View.VISIBLE);
-        txtTotalTime.setText(hrs + "h " + min + "m");
+        txtTotalTime.setText(hrs + "h " + min + "m " + sec + "s");
 
 
     }

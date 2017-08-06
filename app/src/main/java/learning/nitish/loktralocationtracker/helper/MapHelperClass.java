@@ -38,7 +38,6 @@ public class MapHelperClass {
     }
 
     public void markEndingLocationOnMap(Context context, GoogleMap mapObject, LatLng location) {
-
         mapObject.addMarker(new MarkerOptions()
                 .position(location)
                 .draggable(true)
@@ -89,7 +88,6 @@ public class MapHelperClass {
         LocationRequest mLocationRequest = new LocationRequest();
         mLocationRequest.setInterval(5000);
         mLocationRequest.setFastestInterval(3000);
-        mLocationRequest.setSmallestDisplacement(10);
         mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         return mLocationRequest;
     }
